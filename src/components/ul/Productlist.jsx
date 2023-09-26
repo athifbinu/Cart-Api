@@ -7,9 +7,7 @@ const Productlist = ({data}) => {
     <>
     {
       data?.map((item,index)=>(
-        <Link to={`/details/${item.id}`}>
         <ProductCard item={item} key={index}/>
-        </Link>
       ))
     }
     </>

@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 import loginImg from "../../Assets/images/log.jpeg";
+
+
+
 const Signup = () => {
+
+  
+
+
+
   return (
     <section className=" min-h-fit mt-12 flex items-center justify-center mb-11">
       <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-2xl items-center">

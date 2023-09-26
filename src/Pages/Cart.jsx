@@ -7,8 +7,6 @@ import { cartActions } from "../redux/CartSlice/CartSlices";
 const Cart = () => {
   const CartItem = useSelector((state) => state.cart.cartItems);
 
-  console.log("cartItems", CartItem);
-
   const dispatch = useDispatch();
 
   const removeCart = (itemId) => {

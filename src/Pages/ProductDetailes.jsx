@@ -14,7 +14,6 @@ const ProductDetailes = () => {
   const [product, setProduct] = useState(null);
 
   const { id } = useParams();
-  console.log("useparamsid", id);
 
   const dispatch = useDispatch();
 
@@ -40,7 +39,6 @@ const ProductDetailes = () => {
       })
     );
   };
-  
 
   return (
     <section>
@@ -79,16 +77,17 @@ const ProductDetailes = () => {
               </div>
 
               <div className="flex gap-3 mb-2">
-                <p>Category</p>
+                <p>Description</p>
                 <p>|</p>
-                <p>Test</p>
+                <p>{product && <>{product.description}</>}</p>
               </div>
 
-              <div className="mb-5">
-                <p>Hello Would</p>
+              <div className="mb-5 flex gap-3">
+                <p>Rs :</p>
+                {product && <>{product.price}</>}
               </div>
 
-              <div className="flex gap-3 mb-5">
+              <div className="flex gap-3 mb-5 text-sm">
                 <div>
                   <img className="w-8" src={HomeDeli} alt="" />
                   <p>Free Delivery</p>
