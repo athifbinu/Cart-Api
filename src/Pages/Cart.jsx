@@ -52,7 +52,7 @@ const Cart = () => {
                   <button onClick={() => incrementQuantity(item.id)} className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400">
                     +
                   </button>
-                  <span className="mx-2 text-black font-bold text-2xl">5</span>
+                  <span className="mx-2 text-black font-bold text-2xl">{totalQuantity}</span>
                   <button onClick= {() => decrementQuantity(item.id)}className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400">
                     -
                   </button>
@@ -77,7 +77,7 @@ const Cart = () => {
         <div className="border border-gray-300 rounded-md p-2  flex justify-between">
           <div>
             <h6 className="text-xl">
-              Totel quanity
+              Total quantity
               <span className="ml-4">:</span>
             </h6>
           </div>

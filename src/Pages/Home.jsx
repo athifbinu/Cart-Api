@@ -44,7 +44,6 @@ const Home = () => {
     setTimeout(() => {
       fetchData().then((data) => {
         setAllProducts(data);
-        console.log(data[0]);
         setVisibleProducts(data.slice(0, productsPerPage));
       });
     }, 1000);

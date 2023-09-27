@@ -45,7 +45,7 @@ const ProductDetailes = () => {
       <div className="container mx-auto p-5">
         <div className="md:flex items-center ">
           <div className="md:w-4/12">
-            <div className="product__main-img">
+            <div>
               {product && (
                 <img
                   className="rounded-lg"
