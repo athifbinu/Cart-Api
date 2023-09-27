@@ -3,44 +3,55 @@ import React, { useState } from "react";
 import loginImg from "../../Assets/images/log.jpeg";
 import axios from "axios";
 
-
-
 const Signup = () => {
+ 
 
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
-    email: '',
-    password: '',
+    const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    password: "",
   });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-
-      const bearerToken = 'EqzC2SPUcFRrrJKKL4ngAGAnZDIN8ZLS';
-
       const response = await axios.post(
-        'http://caffa.smsoman.com/api/V1/customers',
-        formData,
+        "http://caffa.smsoman.com/api/V1/customers",
+        {
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          phone: formData.phone,
+          email: formData.email,
+          password: formData.password,
+        },
         {
           headers: {
-            Authorization: `Bearer ${bearerToken}`,
+            Authorization: "Bearer EqzC2SPUcFRrrJKKL4ngAGAnZDIN8ZLS",
           },
         }
       );
 
-      console.log('Signup successful', response.data);
+      if (response.status === 200) {
+        console.log("Signup successful");
+      } else {
+        console.error("Signup failed");
+      }
     } catch (error) {
-      console.error('Signup failed', error);
+      console.error("Error signing up:", error);
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
 
 
   return (
@@ -105,7 +116,10 @@ const Signup = () => {
               />
             </div>
 
-            <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
+            <button
+              type="submit"
+              className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300"
+            >
               Signup
             </button>
           </form>
