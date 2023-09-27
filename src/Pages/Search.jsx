@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import products from "../Assets/data/products";
 import Productlist from "../components/ul/Productlist";
+import Searchproducts from "../Api/Search";
 
 const Search = () => {
-  const [allProducts, setAllProducts] = useState(products);
+  const [allProducts, setAllProducts] = useState(Searchproducts);
 
   const handleSearch = (e) => {
     const searchTerm = e.target.value;
     console.log(searchTerm);
-    const searchedProducts = products.filter((item) =>(
+    const searchedProducts = Searchproducts.filter((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
     );
     console.log(searchedProducts);
     setAllProducts(searchedProducts);

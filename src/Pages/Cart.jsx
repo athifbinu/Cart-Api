@@ -23,13 +23,13 @@ const Cart = () => {
 
   const totalAmount = useSelector((state) => state.cart.totalAmount);
 
-  const totalQuantity=useSelector(state=>state.cart.totalQuantity)
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
   return (
     <div className="flex items-center justify-between p-5">
       <div className="left ">
         <h1 className="text-black font-bold p-5 text-3xl ">Cart</h1>
-        <hr  className="mb-10"/>
+        <hr className="mb-10" />
 
         {CartItem.length === 0 ? (
           <h1 className="ml-96 text-3xl mb-16">No Products in cart</h1>
@@ -49,11 +49,19 @@ const Cart = () => {
                 </div>
 
                 <div className="items-center flex">
-                  <button onClick={() => incrementQuantity(item.id)} className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400">
+                  <button
+                    onClick={() => incrementQuantity(item.id)}
+                    className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400"
+                  >
                     +
                   </button>
-                  <span className="mx-2 text-black font-bold text-2xl">{totalQuantity}</span>
-                  <button onClick= {() => decrementQuantity(item.id)}className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400">
+                  <span className="mx-2 text-black font-bold text-2xl">
+                    {totalQuantity}
+                  </span>
+                  <button
+                    onClick={() => decrementQuantity(item.id)}
+                    className="border border-solid border-gray-500 px-2 py-1 rounded hover:bg-gray-400"
+                  >
                     -
                   </button>
                 </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../Assets/images/metaverse.jpg";
 import Productlist from "../components/ul/Productlist";
+import { AiOutlineArrowDown } from "react-icons/ai";
 import axios from "axios";
 
 const Home = () => {
@@ -85,12 +86,16 @@ const Home = () => {
           <Productlist data={visibleProducts} />
         </div>
         {visibleProducts.length < allProducts.length && (
-          <div className="text-center mt-8">
+          <div className=" mt-8">
             <button
               onClick={handleLoadMore}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mb-14"
+              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 mb-14 
+              flex items-center gap-2 m-auto "
             >
               Load More
+              <span>
+                <AiOutlineArrowDown size={20} />
+              </span>
             </button>
           </div>
         )}

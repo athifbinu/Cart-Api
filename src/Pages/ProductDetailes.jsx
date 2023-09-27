@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 
-import HeroImg from "../Assets/images/product_09.jpg";
 import HomeDeli from "../Assets/images/homed.jpeg";
 import DroneDeli from "../Assets/images/drone.jpeg";
 import FastDeli from "../Assets/images/bike.jpeg";
 import { useParams } from "react-router-dom";
-import products from "../Assets/data/products";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux/CartSlice/CartSlices";
+import Searchproducts from "../Api/Search";
 
 const ProductDetailes = () => {
   const [product, setProduct] = useState(null);
@@ -18,7 +17,9 @@ const ProductDetailes = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const selectedProduct = products.find((item) => item.id === parseInt(id));
+    const selectedProduct = Searchproducts.find(
+      (item) => item.id === parseInt(id)
+    );
 
     if (selectedProduct) {
       setProduct(selectedProduct);
@@ -27,7 +28,7 @@ const ProductDetailes = () => {
     return () => {
       setProduct(null);
     };
-  }, [id, products]);
+  }, [id, Searchproducts]);
 
   const addToCart = () => {
     dispatch(

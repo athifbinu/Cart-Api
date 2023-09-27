@@ -69,7 +69,7 @@ const cartSlice = createSlice({
     },
 
     
-    //cart product delete funtion
+
     deleteItem: (state, action) => {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
