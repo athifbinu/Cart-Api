@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import loginImg from "../../Assets/images/log.jpeg"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -79,9 +79,11 @@ const Login = () => {
 
         <div className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
           <p>Don t have an account?</p>
+          <Link to="signup">
           <button className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">
             Register
           </button>
+          </Link>
         </div>
       </div>
 

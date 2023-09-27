@@ -1,4 +1,4 @@
-import testImg from "../images/product_09.jpg";
+
 import axios from "axios";
 
 

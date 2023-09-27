@@ -25,11 +25,11 @@ const ProductCard = ({ item }) => {
     >
       
          <Link  to={`/details/${item.id}`}>
-             <img className="mb-8 rounded-lg w-44 " src={item.image} alt="" />
+             <img className="mb-8 rounded-lg w-44 h-44 " src={item.image} alt="" />
          </Link>
       <div className="text-lg mb-4 flex  items-center justify-between ">
         <div>
-          <h1 className="font-bold text-black text-3xl ">{item.name}</h1>
+          <h1 className="font-bold text-black text-1xl ">{item.name}</h1>
         </div>
         <div>
           <img className="w-5" src={like} alt="" />

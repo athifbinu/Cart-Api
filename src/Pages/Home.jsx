@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "../Assets/images/metaverse.jpg";
-import productsData from "../Assets/data/products";
 import Productlist from "../components/ul/Productlist";
 import axios from "axios";
 
@@ -10,7 +9,6 @@ const Home = () => {
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
   const productsPerPage = 10;
-
 
   const fetchData = async () => {
     try {
@@ -34,27 +32,23 @@ const Home = () => {
         },
         { headers }
       );
-      if(response){
-
-        return response.data.data.products
+      if (response) {
+        return response.data.data.products;
       }
     } catch (error) {
       console.log(error);
     }
   };
- 
+
   useEffect(() => {
-        setTimeout(() => {
-          fetchData().then((data)=>{
-            setAllProducts(data)
-            console.log(data[0]);
-            setVisibleProducts(data.slice(0, productsPerPage));
-          });
-        
-        }, 1000); 
+    setTimeout(() => {
+      fetchData().then((data) => {
+        setAllProducts(data);
+        console.log(data[0]);
+        setVisibleProducts(data.slice(0, productsPerPage));
+      });
+    }, 1000);
   }, []);
-
-
 
   const handleLoadMore = () => {
     const newIndex = startIndex + productsPerPage;
@@ -77,6 +71,7 @@ const Home = () => {
                 <Link to="/search">Search</Link>
               </button>
             </div>
+
             <div>
               <div>
                 <img className="w-96" src={heroImg} alt="" />
