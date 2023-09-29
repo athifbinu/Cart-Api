@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import loginImg from "../../Assets/images/log.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -26,18 +28,32 @@ const Login = () => {
         {
           username: formData.email,
           password: formData.password,
+        },
+        {
+          headers: {
+            Authorization: "Bearer EqzC2SPUcFRrrJKKL4ngAGAnZDIN8ZLS",
+          },
         }
       );
 
       if (response.status === 200) {
+        console.log("Login successful", response);
 
-        console.log("Login successful");
+        const { api_token } = response.data.data;
+
+        await localStorage.setItem("user", api_token);
+
+        swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: "You have successfully signed up.",
+        });
+
+        navigate("/cart");
       } else {
-  
         console.error("Login failed");
       }
     } catch (error) {
-
       console.error("Error logging in:", error);
     }
   };
@@ -115,12 +131,12 @@ const Login = () => {
           </button>
 
           <div className="mt-5 text-xs border-b border-[#002D74] py-4 text-[#002D74]">
-            <a href="#">Forgot your password?</a>
+            <Link to="#">Forgot your password?</Link>
           </div>
 
           <div className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
             <p>Don t have an account?</p>
-            <Link to="signup">
+            <Link to="/signup">
               <button className="py-2 px-5 bg-white border rounded-xl hover:scale-110 duration-300">
                 Register
               </button>

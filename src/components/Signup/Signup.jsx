@@ -2,11 +2,16 @@ import React, { useState } from "react";
 
 import loginImg from "../../Assets/images/log.jpeg";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+import swal from "sweetalert2";
 
 const Signup = () => {
- 
+  const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
+  const [err, Seterror] = useState(false);
+
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     phone: "",
@@ -43,16 +48,23 @@ const Signup = () => {
       );
 
       if (response.status === 200) {
-        console.log("Signup successful");
+        console.log("Signup successful", response);
+
+        swal.fire({
+          icon: "success",
+          title: "Signup Successful",
+          text: "You have successfully signed up.",
+        });
+
+        navigate("/login");
       } else {
         console.error("Signup failed");
+        Seterror(true);
       }
     } catch (error) {
       console.error("Error signing up:", error);
     }
   };
-
-
 
   return (
     <section className=" min-h-fit mt-12 flex items-center justify-center mb-11">

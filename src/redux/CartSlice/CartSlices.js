@@ -68,8 +68,6 @@ const cartSlice = createSlice({
       }
     },
 
-    
-
     deleteItem: (state, action) => {
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);

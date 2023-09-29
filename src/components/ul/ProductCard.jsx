@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import like from "../../Assets/images/heart.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/CartSlice/CartSlices";
 const ProductCard = ({ item }) => {
@@ -23,10 +23,9 @@ const ProductCard = ({ item }) => {
       className="bg-white shadow-1 p-6 rounded-lg rounded-tl-[70px]
  w-full max-w-[300px] mx-auto cursor-pointer hover:shadow-2xl transition "
     >
-      
-         <Link  to={`/details/${item.id}`}>
-             <img className="mb-8 rounded-lg w-44 h-44 " src={item.image} alt="" />
-         </Link>
+      <Link to={`/details/${item.id}`}>
+        <img className="mb-8 rounded-lg w-44 h-44 " src={item.image} alt="" />
+      </Link>
       <div className="text-lg mb-4 flex  items-center justify-between ">
         <div>
           <h1 className="font-bold text-black text-1xl ">{item.name}</h1>
